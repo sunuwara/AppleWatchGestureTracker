@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31BC2EE925191882000C48E6 /* DecontaminAide WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 31BC2EE825191882000C48E6 /* DecontaminAide WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		31BC2EEE25191886000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2EED25191886000C48E6 /* Assets.xcassets */; };
+		31BC2EF525191886000C48E6 /* DecontaminAide WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 31BC2EF425191886000C48E6 /* DecontaminAide WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */; };
+		31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2EFB25191886000C48E6 /* ContentView.swift */; };
+		31BC2EFE25191886000C48E6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2EFD25191886000C48E6 /* NotificationController.swift */; };
+		31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2EFF25191886000C48E6 /* NotificationView.swift */; };
+		31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2F0125191886000C48E6 /* ComplicationController.swift */; };
+		31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0325191889000C48E6 /* Assets.xcassets */; };
+		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31BC2EEA25191882000C48E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31BC2EDE25191882000C48E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31BC2EE725191882000C48E6;
+			remoteInfo = "DecontaminAide WatchKit App";
+		};
+		31BC2EF625191886000C48E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31BC2EDE25191882000C48E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31BC2EF325191886000C48E6;
+			remoteInfo = "DecontaminAide WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31BC2F0F25191889000C48E6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				31BC2EF525191886000C48E6 /* DecontaminAide WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31BC2F1325191889000C48E6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				31BC2EE925191882000C48E6 /* DecontaminAide WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		31BC2EE425191882000C48E6 /* DecontaminAide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecontaminAide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31BC2EE825191882000C48E6 /* DecontaminAide WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DecontaminAide WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31BC2EED25191886000C48E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31BC2EEF25191886000C48E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BC2EF425191886000C48E6 /* DecontaminAide WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DecontaminAide WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecontaminAideApp.swift; sourceTree = "<group>"; };
+		31BC2EFB25191886000C48E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		31BC2EFD25191886000C48E6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		31BC2EFF25191886000C48E6 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		31BC2F0125191886000C48E6 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		31BC2F0325191889000C48E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31BC2F0625191889000C48E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		31BC2F0825191889000C48E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31BC2EF125191886000C48E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31BC2EDD25191882000C48E6 = {
+			isa = PBXGroup;
+			children = (
+				31BC2EEC25191882000C48E6 /* DecontaminAide WatchKit App */,
+				31BC2EF825191886000C48E6 /* DecontaminAide WatchKit Extension */,
+				31BC2EE525191882000C48E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31BC2EE525191882000C48E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31BC2EE425191882000C48E6 /* DecontaminAide.app */,
+				31BC2EE825191882000C48E6 /* DecontaminAide WatchKit App.app */,
+				31BC2EF425191886000C48E6 /* DecontaminAide WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31BC2EEC25191882000C48E6 /* DecontaminAide WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				31BC2EED25191886000C48E6 /* Assets.xcassets */,
+				31BC2EEF25191886000C48E6 /* Info.plist */,
+			);
+			path = "DecontaminAide WatchKit App";
+			sourceTree = "<group>";
+		};
+		31BC2EF825191886000C48E6 /* DecontaminAide WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
+				31BC2EFB25191886000C48E6 /* ContentView.swift */,
+				31BC2EFD25191886000C48E6 /* NotificationController.swift */,
+				31BC2EFF25191886000C48E6 /* NotificationView.swift */,
+				31BC2F0125191886000C48E6 /* ComplicationController.swift */,
+				31BC2F0325191889000C48E6 /* Assets.xcassets */,
+				31BC2F0825191889000C48E6 /* Info.plist */,
+				31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */,
+				31BC2F0525191889000C48E6 /* Preview Content */,
+			);
+			path = "DecontaminAide WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		31BC2F0525191889000C48E6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				31BC2F0625191889000C48E6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31BC2EE325191882000C48E6 /* DecontaminAide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31BC2F1425191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide" */;
+			buildPhases = (
+				31BC2EE225191882000C48E6 /* Resources */,
+				31BC2F1325191889000C48E6 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31BC2EEB25191882000C48E6 /* PBXTargetDependency */,
+			);
+			name = DecontaminAide;
+			productName = DecontaminAide;
+			productReference = 31BC2EE425191882000C48E6 /* DecontaminAide.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		31BC2EE725191882000C48E6 /* DecontaminAide WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31BC2F1025191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide WatchKit App" */;
+			buildPhases = (
+				31BC2EE625191882000C48E6 /* Resources */,
+				31BC2F0F25191889000C48E6 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31BC2EF725191886000C48E6 /* PBXTargetDependency */,
+			);
+			name = "DecontaminAide WatchKit App";
+			productName = "DecontaminAide WatchKit App";
+			productReference = 31BC2EE825191882000C48E6 /* DecontaminAide WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		31BC2EF325191886000C48E6 /* DecontaminAide WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31BC2F0C25191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide WatchKit Extension" */;
+			buildPhases = (
+				31BC2EF025191886000C48E6 /* Sources */,
+				31BC2EF125191886000C48E6 /* Frameworks */,
+				31BC2EF225191886000C48E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DecontaminAide WatchKit Extension";
+			productName = "DecontaminAide WatchKit Extension";
+			productReference = 31BC2EF425191886000C48E6 /* DecontaminAide WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31BC2EDE25191882000C48E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					31BC2EE325191882000C48E6 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					31BC2EE725191882000C48E6 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					31BC2EF325191886000C48E6 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = 31BC2EE125191882000C48E6 /* Build configuration list for PBXProject "DecontaminAide" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 31BC2EDD25191882000C48E6;
+			productRefGroup = 31BC2EE525191882000C48E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31BC2EE325191882000C48E6 /* DecontaminAide */,
+				31BC2EE725191882000C48E6 /* DecontaminAide WatchKit App */,
+				31BC2EF325191886000C48E6 /* DecontaminAide WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31BC2EE225191882000C48E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31BC2EE625191882000C48E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BC2EEE25191886000C48E6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31BC2EF225191886000C48E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */,
+				31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31BC2EF025191886000C48E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BC2EFE25191886000C48E6 /* NotificationController.swift in Sources */,
+				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
+				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
+				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
+				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31BC2EEB25191882000C48E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31BC2EE725191882000C48E6 /* DecontaminAide WatchKit App */;
+			targetProxy = 31BC2EEA25191882000C48E6 /* PBXContainerItemProxy */;
+		};
+		31BC2EF725191886000C48E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31BC2EF325191886000C48E6 /* DecontaminAide WatchKit Extension */;
+			targetProxy = 31BC2EF625191886000C48E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		31BC2F0A25191889000C48E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		31BC2F0B25191889000C48E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		31BC2F0D25191889000C48E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "DecontaminAide WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		31BC2F0E25191889000C48E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "DecontaminAide WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		31BC2F1125191889000C48E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				IBSC_MODULE = DecontaminAide_WatchKit_Extension;
+				INFOPLIST_FILE = "DecontaminAide WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		31BC2F1225191889000C48E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				IBSC_MODULE = DecontaminAide_WatchKit_Extension;
+				INFOPLIST_FILE = "DecontaminAide WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		31BC2F1525191889000C48E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		31BC2F1625191889000C48E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31BC2EE125191882000C48E6 /* Build configuration list for PBXProject "DecontaminAide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BC2F0A25191889000C48E6 /* Debug */,
+				31BC2F0B25191889000C48E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31BC2F0C25191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BC2F0D25191889000C48E6 /* Debug */,
+				31BC2F0E25191889000C48E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31BC2F1025191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BC2F1125191889000C48E6 /* Debug */,
+				31BC2F1225191889000C48E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31BC2F1425191889000C48E6 /* Build configuration list for PBXNativeTarget "DecontaminAide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BC2F1525191889000C48E6 /* Debug */,
+				31BC2F1625191889000C48E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31BC2EDE25191882000C48E6 /* Project object */;
+}
