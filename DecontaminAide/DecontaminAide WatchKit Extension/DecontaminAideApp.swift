@@ -19,3 +19,9 @@ struct DecontaminAideApp: App {
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }
+
+struct DecontaminAideApp_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, World Test!")
+    }
+}
