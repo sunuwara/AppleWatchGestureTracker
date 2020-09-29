@@ -22,6 +22,6 @@ struct DecontaminAideApp: App {
 
 struct DecontaminAideApp_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Hello, World Test!")
+        Text("Hello, World Testing!")
     }
 }
