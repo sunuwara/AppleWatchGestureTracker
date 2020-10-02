@@ -345,6 +345,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.test;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -398,6 +399,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.test;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -409,9 +411,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = B9232MP3GR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "DecontaminAide WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -419,8 +422,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -433,9 +437,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = B9232MP3GR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "DecontaminAide WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -443,8 +448,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -460,10 +466,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = B9232MP3GR;
 				IBSC_MODULE = DecontaminAide_WatchKit_Extension;
 				INFOPLIST_FILE = "DecontaminAide WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -480,10 +486,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = B9232MP3GR;
 				IBSC_MODULE = DecontaminAide_WatchKit_Extension;
 				INFOPLIST_FILE = "DecontaminAide WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -496,12 +502,14 @@
 		31BC2F1525191889000C48E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = B9232MP3GR;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -509,12 +517,14 @@
 		31BC2F1625191889000C48E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A3NZ5C96B5;
+				DEVELOPMENT_TEAM = H92W7334V4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Capstone.DecontaminAide;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
