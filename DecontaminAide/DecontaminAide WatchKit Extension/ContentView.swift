@@ -7,42 +7,69 @@
 
 import SwiftUI
 import CoreMotion
+import os.log
 
 
 class MotionManager: ObservableObject {
     
-    @State var xGrav  = 0.0
-    @State var yGrav  = 0.0
-    @State var zGrav  = 0.0
+    var timer:Timer!
+    @Published var xGrav  = 0.0
+    var yGrav  = 0.0
+    var zGrav  = 0.0
     
-    @State var xAcc  = 0.0
-    @State var yAcc  = 0.0
-    @State var zAcc  = 0.0
+    var xAcc  = 0.0
+    var yAcc  = 0.0
+    var zAcc  = 0.0
     
-    @State var xRot  = 0.0
-    @State var yRot  = 0.0
-    @State var zRot  = 0.0
+    var xRot  = 0.0
+    var yRot  = 0.0
+    var zRot  = 0.0
     
     let motionManager = CMMotionManager()
     
-    init(){
-        self.motionManager.deviceMotionUpdateInterval = 1.0 / 50
+    func startMotion(){
         
-        motionManager.startDeviceMotionUpdates()
+        if(self.motionManager.isDeviceMotionAvailable){
+            motionManager.deviceMotionUpdateInterval = 1.0 / 50
+            motionManager.startDeviceMotionUpdates()
+            self.timer = Timer(fire:Date(), interval: (1.0 / 50.0), repeats: true, block: { (timer) in
+                if let data =
+                    self.motionManager.deviceMotion{
+                    self.xGrav = data.gravity.x
+                    self.yGrav = data.gravity.y
+                    self.zGrav = data.gravity.z
+                    
+                    self.xAcc = data.userAcceleration.x
+                    self.yAcc = data.userAcceleration.y
+                    self.zAcc = data.userAcceleration.z
+                    
+                    self.xRot = data.rotationRate.x
+                    self.yRot = data.rotationRate.y
+                    self.zRot = data.rotationRate.z
+                    
+                    let timestamp = Date().timeIntervalSinceNow
+                    os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@,",
+                           String(timestamp),
+                           String(data.gravity.x),
+                           String(data.gravity.y),
+                           String(data.gravity.z),
+                           String(data.userAcceleration.x),
+                           String(data.userAcceleration.y),
+                           String(data.userAcceleration.z),
+                           String(data.rotationRate.x),
+                           String(data.rotationRate.y),
+                           String(data.rotationRate.z)
+                           )
+
+                }
+            })
+            
+            RunLoop.current.add(self.timer!, forMode: .default)
+            
+        }
     }
-    
-    func processDeviceMotion(_ deviceMotion: CMDeviceMotion){
-        self.xGrav = deviceMotion.gravity.x
-        self.yGrav = deviceMotion.gravity.y
-        self.zGrav = deviceMotion.gravity.z
-        
-        self.xAcc = deviceMotion.userAcceleration.x
-        self.yAcc = deviceMotion.userAcceleration.y
-        self.zAcc = deviceMotion.userAcceleration.z
-        
-        self.xRot = deviceMotion.rotationRate.x
-        self.yRot = deviceMotion.rotationRate.y
-        self.zRot = deviceMotion.rotationRate.z
+    func stopMotion(){
+        motionManager.stopDeviceMotionUpdates()
     }
     
 }
@@ -50,9 +77,10 @@ class MotionManager: ObservableObject {
 
 struct ContentView: View {
     
-    var motion: MotionManager
-    
-//    @State private var xGrav  = 0
+    @ObservedObject var motion: MotionManager
+    @State var started: Bool = false
+    @State var btnString:String = "Start Tracking"
+//    @State private var xGravTest  = 0
 //    @State private var yGrav  = 0
 //    @State private var zGrav  = 0
 //
@@ -67,10 +95,23 @@ struct ContentView: View {
     
     
     var body: some View {
+        ScrollView{
         VStack(alignment: .leading, spacing: 3, content: {
-            Text("Core Motion Data")
-                .underline()
-                .bold()
+            Button(action: {
+                if(!started){
+                    started = true
+                    motion.startMotion()
+                    btnString = "Stop Tracking"
+                } else{
+                    started = false
+                    motion.stopMotion()
+                    btnString = "Start Tracking"
+                }
+            }) {
+                Text(btnString)
+                    
+                    
+            }
             Spacer()
             Text("Gravity:")
             HStack{
@@ -96,6 +137,7 @@ struct ContentView: View {
             
         })
         
+    }
     }
 }
 
