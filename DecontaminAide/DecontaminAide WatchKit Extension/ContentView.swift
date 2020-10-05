@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  DecontaminAide WatchKit Extension
 //
-//  Created by KaranDev on 9/21/20.
+//  Created by PGCapstone Team on 9/21/20.
 //
 
 import SwiftUI
@@ -24,6 +24,10 @@ class MotionManager: ObservableObject {
     var xRot  = 0.0
     var yRot  = 0.0
     var zRot  = 0.0
+    
+    var rAtt = 0.0
+    var pAtt = 0.0
+    var yAtt = 0.0
     
     let motionManager = CMMotionManager()
     
@@ -47,8 +51,12 @@ class MotionManager: ObservableObject {
                     self.yRot = data.rotationRate.y
                     self.zRot = data.rotationRate.z
                     
+                    self.rAtt = data.attitude.roll
+                    self.pAtt = data.attitude.pitch
+                    self.yAtt = data.attitude.yaw
+                    
                     let timestamp = Date().timeIntervalSinceNow
-                    os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@,",
+                    os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@,",
                            String(timestamp),
                            String(data.gravity.x),
                            String(data.gravity.y),
@@ -58,9 +66,11 @@ class MotionManager: ObservableObject {
                            String(data.userAcceleration.z),
                            String(data.rotationRate.x),
                            String(data.rotationRate.y),
-                           String(data.rotationRate.z)
+                           String(data.rotationRate.z),
+                           String(data.attitude.roll),
+                           String(data.attitude.pitch),
+                           String(data.attitude.yaw)
                            )
-
                 }
             })
             
@@ -133,6 +143,13 @@ struct ContentView: View {
                 Text("Y: " + String(motion.yRot))
                 Text("Z: " + String(motion.zRot))
 
+            }
+            Text("Attitude:")
+            HStack{
+                Text("R: " + String(motion.rAtt))
+                Text("P: " + String(motion.pAtt))
+                Text("Y: " + String(motion.yAtt))
+                
             }
             
         })
