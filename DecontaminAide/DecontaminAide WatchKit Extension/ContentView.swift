@@ -13,7 +13,8 @@ import os.log
 class MotionManager: ObservableObject {
     
     var timer:Timer!
-    @Published var xGrav  = 0.0
+    @Published
+    var xGrav  = 0.0
     var yGrav  = 0.0
     var zGrav  = 0.0
     
@@ -25,8 +26,8 @@ class MotionManager: ObservableObject {
     var yRot  = 0.0
     var zRot  = 0.0
     
-    var rAtt = 0.0
     var pAtt = 0.0
+    var rAtt = 0.0
     var yAtt = 0.0
     
     let motionManager = CMMotionManager()
@@ -37,8 +38,7 @@ class MotionManager: ObservableObject {
             motionManager.deviceMotionUpdateInterval = 1.0 / 50
             motionManager.startDeviceMotionUpdates()
             self.timer = Timer(fire:Date(), interval: (1.0 / 50.0), repeats: true, block: { (timer) in
-                if let data =
-                    self.motionManager.deviceMotion{
+                if let data = self.motionManager.deviceMotion{
                     self.xGrav = data.gravity.x
                     self.yGrav = data.gravity.y
                     self.zGrav = data.gravity.z
@@ -51,8 +51,8 @@ class MotionManager: ObservableObject {
                     self.yRot = data.rotationRate.y
                     self.zRot = data.rotationRate.z
                     
-                    self.rAtt = data.attitude.roll
                     self.pAtt = data.attitude.pitch
+                    self.rAtt = data.attitude.roll
                     self.yAtt = data.attitude.yaw
                     
                     let timestamp = Date().timeIntervalSinceNow
@@ -67,8 +67,8 @@ class MotionManager: ObservableObject {
                            String(data.rotationRate.x),
                            String(data.rotationRate.y),
                            String(data.rotationRate.z),
-                           String(data.attitude.roll),
                            String(data.attitude.pitch),
+                           String(data.attitude.roll),
                            String(data.attitude.yaw)
                            )
                 }
@@ -78,10 +78,10 @@ class MotionManager: ObservableObject {
             
         }
     }
+    
     func stopMotion(){
         motionManager.stopDeviceMotionUpdates()
     }
-    
 }
 
 
@@ -90,71 +90,58 @@ struct ContentView: View {
     @ObservedObject var motion: MotionManager
     @State var started: Bool = false
     @State var btnString:String = "Start Tracking"
-//    @State private var xGravTest  = 0
-//    @State private var yGrav  = 0
-//    @State private var zGrav  = 0
-//
-//    @State private var xAcc  = 0
-//    @State private var yAcc  = 0
-//    @State private var zAcc  = 0
-//
-//    @State private var xRot  = 0
-//    @State private var yRot  = 0
-//    @State private var zRot  = 0
-//
     
     
     var body: some View {
         ScrollView{
-        VStack(alignment: .leading, spacing: 3, content: {
-            Button(action: {
-                if(!started){
-                    started = true
-                    motion.startMotion()
-                    btnString = "Stop Tracking"
-                } else{
-                    started = false
-                    motion.stopMotion()
-                    btnString = "Start Tracking"
+            VStack(alignment: .leading, spacing: 3, content: {
+                Button(action: {
+                    if(!started){
+                        started = true
+                        motion.startMotion()
+                        btnString = "Stop Tracking"
+                    } else{
+                        started = false
+                        motion.stopMotion()
+                        btnString = "Start Tracking"
+                    }
+                }) {
+                    Text(btnString)
                 }
-            }) {
-                Text(btnString)
-                    
-                    
-            }
-            Spacer()
-            Text("Gravity:")
-            HStack{
-                Text("X: " + String(motion.xGrav))
-                Text("Y: " + String(motion.yGrav))
-                Text("Z: " + String(motion.zGrav))
-
-            }
-            Text("Acceleration:")
-            HStack(alignment: .center){
-                Text("X: " + String(motion.xAcc))
-                Text("Y: " + String(motion.yAcc))
-                Text("Z: " + String(motion.zAcc))
-
-            }
-            Text("Rotation:")
-            HStack{
-                Text("X: " + String(motion.xRot))
-                Text("Y: " + String(motion.yRot))
-                Text("Z: " + String(motion.zRot))
-
-            }
-            Text("Attitude:")
-            HStack{
-                Text("R: " + String(motion.rAtt))
-                Text("P: " + String(motion.pAtt))
-                Text("Y: " + String(motion.yAtt))
                 
-            }
-            
-        })
-        
-    }
+                Spacer()
+                Text("Gravity:")
+                HStack{
+                    Text("X: " + String(format: "%.3f", motion.xGrav))
+                    Text("Y: " + String(format: "%.3f", motion.yGrav))
+                    Text("Z: " + String(format: "%.3f", motion.zGrav))
+
+                }
+                
+                Text("Acceleration:")
+                HStack(alignment: .center){
+                    Text("X: " + String(format: "%.3f", motion.xAcc))
+                    Text("Y: " + String(format: "%.3f", motion.yAcc))
+                    Text("Z: " + String(format: "%.3f", motion.zAcc))
+
+                }
+                
+                Text("Rotation:")
+                HStack{
+                    Text("X: " + String(format: "%.3f", motion.xRot))
+                    Text("Y: " + String(format: "%.3f", motion.yRot))
+                    Text("Z: " + String(format: "%.3f", motion.zRot))
+
+                }
+                
+                Text("Attitude:")
+                HStack{
+                    Text("P: " + String(format: "%.3f", motion.pAtt))
+                    Text("R: " + String(format: "%.3f", motion.rAtt))
+                    Text("Y: " + String(format: "%.3f", motion.yAtt))
+                }
+            })
+        }
     }
 }
 
