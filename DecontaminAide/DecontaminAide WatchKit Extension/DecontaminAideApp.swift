@@ -2,7 +2,7 @@
 //  DecontaminAideApp.swift
 //  DecontaminAide WatchKit Extension
 //
-//  Created by KaranDev on 9/21/20.
+//  Created by PGCapstone Team on 9/21/20.
 //
 
 import SwiftUI
