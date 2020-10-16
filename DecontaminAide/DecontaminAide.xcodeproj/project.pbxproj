@@ -17,6 +17,9 @@
 		31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2F0125191886000C48E6 /* ComplicationController.swift */; };
 		31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0325191889000C48E6 /* Assets.xcassets */; };
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
+		8B37E1B625390F530056E32C /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1B525390F530056E32C /* MotionManager.swift */; };
+		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
+		8B37E1CD253956170056E32C /* raw_motion_output.log in Resources */ = {isa = PBXBuildFile; fileRef = 8B37E1CC253956170056E32C /* raw_motion_output.log */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		31BC2F0625191889000C48E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31BC2F0825191889000C48E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		8B37E1B525390F530056E32C /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
+		8B37E1CC253956170056E32C /* raw_motion_output.log */ = {isa = PBXFileReference; lastKnownFileType = text; path = raw_motion_output.log; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 		31BC2EDD25191882000C48E6 = {
 			isa = PBXGroup;
 			children = (
+				8B37E1CC253956170056E32C /* raw_motion_output.log */,
 				31BC2EEC25191882000C48E6 /* DecontaminAide WatchKit App */,
 				31BC2EF825191886000C48E6 /* DecontaminAide WatchKit Extension */,
 				31BC2EE525191882000C48E6 /* Products */,
@@ -122,6 +129,8 @@
 			children = (
 				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
 				31BC2EFB25191886000C48E6 /* ContentView.swift */,
+				8B37E1B525390F530056E32C /* MotionManager.swift */,
+				8B37E1BE253932F80056E32C /* RunningBuffer.swift */,
 				31BC2EFD25191886000C48E6 /* NotificationController.swift */,
 				31BC2EFF25191886000C48E6 /* NotificationView.swift */,
 				31BC2F0125191886000C48E6 /* ComplicationController.swift */,
@@ -257,6 +266,7 @@
 			files = (
 				31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */,
 				31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */,
+				8B37E1CD253956170056E32C /* raw_motion_output.log in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				31BC2EFE25191886000C48E6 /* NotificationController.swift in Sources */,
+				8B37E1B625390F530056E32C /* MotionManager.swift in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
 				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
 				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
+				8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */,
 				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
