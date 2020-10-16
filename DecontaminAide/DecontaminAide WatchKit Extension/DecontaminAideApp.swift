@@ -12,7 +12,7 @@ struct DecontaminAideApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView(motion: MotionManager())
+                ContentView()
             }
         }
 
