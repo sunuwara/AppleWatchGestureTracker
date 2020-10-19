@@ -19,6 +19,7 @@
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
 		8B37E1B625390F530056E32C /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1B525390F530056E32C /* MotionManager.swift */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
+		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		8B37E1B525390F530056E32C /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
+		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
 				31BC2EFB25191886000C48E6 /* ContentView.swift */,
 				8B37E1B525390F530056E32C /* MotionManager.swift */,
+				9E2BF565253E01A100EB00D9 /* LocationManager.swift */,
 				8B37E1BE253932F80056E32C /* RunningBuffer.swift */,
 				31BC2EFD25191886000C48E6 /* NotificationController.swift */,
 				31BC2EFF25191886000C48E6 /* NotificationView.swift */,
@@ -277,6 +280,7 @@
 				8B37E1B625390F530056E32C /* MotionManager.swift in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
 				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
+				9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */,
 				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
 				8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */,
 				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,

@@ -12,6 +12,7 @@ struct ContentView: View {
     // MARK: Properties
     
     @ObservedObject var motionManager = MotionManager()
+    @ObservedObject var locationManager = LocationManager()
     
     @State var started: Bool = false
     
@@ -36,9 +37,11 @@ struct ContentView: View {
                         if(!started) {
                             started = true
                             motionManager.startUpdates()
+                            locationManager.startUpdates()
                         } else {
                             started = false
                             motionManager.stopUpdates()
+                            locationManager.stopUpdates()
                         }
                     }) {
                         Image(systemName: started ? "stop.fill" : "play.fill")
