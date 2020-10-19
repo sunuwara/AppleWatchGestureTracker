@@ -22,9 +22,9 @@ class MotionManager: ObservableObject {
     // MARK: Application Specific Constants
     
     // Add threshold data
-    let rollThreshold = 0.80
-    let rateThreshold = 1.08
-    let resetThreshold = 1.08 * 0.05
+    let rollThreshold = 0.85
+    let rateThreshold = 1.35
+    let resetThreshold = 1.35 * 0.05
     
     // The app is using 50hz data and the buffer is going to hold 1s worth of data.
     let sampleInterval = 1.0 / 50
@@ -91,11 +91,9 @@ class MotionManager: ObservableObject {
                 let peakRate = accumulatedRollRot > 0 ? self.rateAlongGravityBuffer.max() : self.rateAlongGravityBuffer.min()
 
                 // Determine face touch
-                if(self.wristLocationIsLeft){
-                    if(accumulatedRollRot > rollThreshold && accumulatedRollRot < (2 * rollThreshold)) {
-                        if(peakRate > rateThreshold) {
-                            incrementFaceTouchCount()
-                        }
+                if(accumulatedRollRot > rollThreshold && accumulatedRollRot < (2 * rollThreshold)) {
+                    if(peakRate > rateThreshold) {
+                        incrementFaceTouchCount()
                     }
                 }
                 
