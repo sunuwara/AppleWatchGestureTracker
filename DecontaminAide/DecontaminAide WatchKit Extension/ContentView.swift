@@ -14,46 +14,42 @@ struct ContentView: View {
     @ObservedObject var motionManager = MotionManager()
     
     @State var started: Bool = false
-    @State var btnString: String = "Start Tracking"
     
     // MARK: View Body
     
     var body: some View {
         ScrollView{
-            VStack(alignment: .leading, spacing: 3, content: {
-                Button(action: {
-                    if(!started){
-                        started = true
-                        motionManager.startUpdates()
-                        btnString = "Stop Tracking"
-                    } else{
-                        started = false
-                        motionManager.stopUpdates()
-                        btnString = "Start Tracking"
+            VStack(alignment: .leading, spacing: 10, content: {
+                HStack(alignment: .center) {
+                    Text("FACE TOUCH COUNT")
+                        .font(.headline)
+                }
+                
+                Button(action: {}) {
+                    Text("\(motionManager.faceTouchCount)")
+                        .font(.title)
+                }
+                
+                HStack() {
+                    Spacer()
+                    Button(action: {
+                        if(!started) {
+                            started = true
+                            motionManager.startUpdates()
+                        } else {
+                            started = false
+                            motionManager.stopUpdates()
+                        }
+                    }) {
+                        Image(systemName: started ? "stop.fill" : "play.fill")
+                            .padding(20)
+                            .foregroundColor(.white)
+                            .background(started ? Color.red : Color.green)
+                            .font(.largeTitle)
+                            .mask(Circle())
                     }
-                }) {
-                    Text(btnString)
-                }
-                
-                Spacer()
-                Text("Gravity:")
-                HStack{
-                    Text(motionManager.gravityStr)
-                }
-                
-                Text("Acceleration:")
-                HStack(){
-                    Text(motionManager.accelerationStr)
-                }
-                
-                Text("Rotation:")
-                HStack{
-                    Text(motionManager.rotationStr)
-                }
-                
-                Text("Attitude:")
-                HStack{
-                    Text(motionManager.attitudeStr)
+                    .buttonStyle(PlainButtonStyle())
+                    Spacer()
                 }
             })
         }
