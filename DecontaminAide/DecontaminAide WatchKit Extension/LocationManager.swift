@@ -58,12 +58,12 @@ class LocationManager: ObservableObject {
                                       data.latitude,
                                       data.longitude)
 
-                let timestamp = Date().timeIntervalSinceNow
-                os_log("Location: %@, %@, %@",
-                       String(timestamp),
-                       String(data.latitude),
-                       String(data.longitude)
-                )
+//                let timestamp = Date().timeIntervalSinceNow
+//                os_log("Location: %@, %@, %@",
+//                       String(timestamp),
+//                       String(data.latitude),
+//                       String(data.longitude)
+//                )
             }
         })
 
