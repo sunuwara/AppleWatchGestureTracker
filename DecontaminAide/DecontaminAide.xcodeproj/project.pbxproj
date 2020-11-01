@@ -17,6 +17,7 @@
 		31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2F0125191886000C48E6 /* ComplicationController.swift */; };
 		31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0325191889000C48E6 /* Assets.xcassets */; };
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
+		8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2419D4254F15690049CAB9 /* WorkoutManager.swift */; };
 		8B37E1B625390F530056E32C /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1B525390F530056E32C /* MotionManager.swift */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
 		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
@@ -81,6 +82,13 @@
 		31BC2F0625191889000C48E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31BC2F0825191889000C48E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		8B2419D4254F15690049CAB9 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		8B2419DD254F2CA00049CAB9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		8B2419E4254F2CEB0049CAB9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		8B2419E6254F2CF40049CAB9 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreML.framework; sourceTree = DEVELOPER_DIR; };
+		8B2419E8254F2CFE0049CAB9 /* SoundAnalysis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SoundAnalysis.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/SoundAnalysis.framework; sourceTree = DEVELOPER_DIR; };
+		8B2419EA254F2D200049CAB9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DecontaminAide WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		8B37E1B525390F530056E32C /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
 		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -105,6 +113,7 @@
 				31BC2EEC25191882000C48E6 /* DecontaminAide WatchKit App */,
 				31BC2EF825191886000C48E6 /* DecontaminAide WatchKit Extension */,
 				31BC2EE525191882000C48E6 /* Products */,
+				8B2419DC254F2CA00049CAB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,8 +139,10 @@
 		31BC2EF825191886000C48E6 /* DecontaminAide WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */,
 				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
 				31BC2EFB25191886000C48E6 /* ContentView.swift */,
+				8B2419D4254F15690049CAB9 /* WorkoutManager.swift */,
 				8B37E1B525390F530056E32C /* MotionManager.swift */,
 				B1545EE02547350E0062D0D7 /* SoundManager.swift */,
 				9E2BF565253E01A100EB00D9 /* LocationManager.swift */,
@@ -154,6 +165,18 @@
 				31BC2F0625191889000C48E6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B2419DC254F2CA00049CAB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B2419EA254F2D200049CAB9 /* CoreLocation.framework */,
+				8B2419E8254F2CFE0049CAB9 /* SoundAnalysis.framework */,
+				8B2419E6254F2CF40049CAB9 /* CoreML.framework */,
+				8B2419E4254F2CEB0049CAB9 /* CoreMotion.framework */,
+				8B2419DD254F2CA00049CAB9 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +309,7 @@
 				8B37E1B625390F530056E32C /* MotionManager.swift in Sources */,
 				B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
+				8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */,
 				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
 				9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */,
 				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
@@ -431,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "DecontaminAide WatchKit Extension/DecontaminAide WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
@@ -442,6 +467,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -457,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "DecontaminAide WatchKit Extension/DecontaminAide WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecontaminAide WatchKit Extension/Preview Content\"";
@@ -468,6 +495,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.capstone.decontaminaide.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";

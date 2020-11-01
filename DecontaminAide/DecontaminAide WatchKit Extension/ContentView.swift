@@ -11,7 +11,7 @@ struct ContentView: View {
     
     // MARK: Properties
     
-    @ObservedObject var motionManager = MotionManager()
+    @ObservedObject var workoutManager = WorkoutManager()
     @ObservedObject var locationManager = LocationManager()
     
     @State var started: Bool = false
@@ -27,7 +27,7 @@ struct ContentView: View {
                 }
                 
                 Button(action: {}) {
-                    Text("\(motionManager.faceTouchCount)")
+                    Text("\(workoutManager.faceTouchCount)")
                         .font(.title)
                 }
                 
@@ -36,12 +36,12 @@ struct ContentView: View {
                     Button(action: {
                         if(!started) {
                             started = true
-                            motionManager.startUpdates()
-                            locationManager.startUpdates()
+                            workoutManager.startWorkout()
+                            //locationManager.startUpdates()
                         } else {
                             started = false
-                            motionManager.stopUpdates()
-                            locationManager.stopUpdates()
+                            workoutManager.stopWorkout()
+                            //locationManager.stopUpdates()
                         }
                     }) {
                         Image(systemName: started ? "stop.fill" : "play.fill")
