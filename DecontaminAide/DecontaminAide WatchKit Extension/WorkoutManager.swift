@@ -8,43 +8,19 @@
 import Foundation
 import HealthKit
 import CoreMotion
+import CoreML
 import WatchKit
 import os.log
 
 class WorkoutManager: ObservableObject {
     
-    // MARK: Properties
+    // MARK: Workout Manager
+    
+    @Published var faceTouchCount = 0
     
     // HealthKit and Workout session
     let healthStore = HKHealthStore()
     var session: HKWorkoutSession!
-    
-    // Motion management
-    let motionManager = CMMotionManager()
-    let wristLocationIsLeft = WKInterfaceDevice.current().wristLocation == .left
-    
-    // Sound management
-    //let soundManager = SoundManager()
-    
-    // MARK: Application Specific Constants
-    
-    // Add threshold data
-    let rollThreshold = 0.85
-    let rateThreshold = 1.35
-    let resetThreshold = 1.35 * 0.05
-    
-    // The app is using 50hz data and the buffer is going to hold 1s worth of data.
-    let sampleInterval = 1.0 / 50
-    let rateAlongGravityBuffer = RunningBuffer(size: 50)
-    let activity = 0
-    
-    var timer:Timer!
-    var recentDetection = false
-    var startTime = 0
-    
-    @Published var faceTouchCount = 0
-    
-    // MARK: Workout Manager
     
     func workoutConfiguration() -> HKWorkoutConfiguration {
         let configuration = HKWorkoutConfiguration()
@@ -86,25 +62,70 @@ class WorkoutManager: ObservableObject {
         session = nil
     }
     
-    // MARK: Motion Manager
+    // MARK: Application Specific Constants
+    
+    struct ModelConstants {
+        static let predictionWindowSize = 150
+        static let sensorsUpdateInterval = 1.0 / 50.0
+        static let stateInLength = 400
+    }
+    
+    let faceTouchModel: MLModel = try! FaceTouchClassifier2(configuration: MLModelConfiguration.init()).model
+    var currentIndexInPredictionWindow = 0
+
+    let gravityDataX = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let gravityDataY = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let gravityDataZ = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    
+    let userAccelDataX = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let userAccelDataY = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let userAccelDataZ = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+
+    let attitudeDataPitch = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let attitudeDataRoll = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let attitudeDataYaw = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    
+    let rotRateDataX = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let rotRateDataY = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let rotRateDataZ = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    
+    let accumulatedRateAlongGravityData = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+    let peakRateData = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
+
+    var faceTouchProbability: [String : Double] = [:]
+    var faceTouchLabel: String = ""
+    var stateOutput = try! MLMultiArray(shape:[ModelConstants.stateInLength as NSNumber], dataType: MLMultiArrayDataType.double)
+    
+    var prevFaceTouchLabel = "nofacetouch"
+    var currFaceTouchLabel = "nofacetouch"
+    
+    // Motion management
+    let motionManager = CMMotionManager()
+    let wristLocationIsLeft = WKInterfaceDevice.current().wristLocation == .left
+    var recentDetection = false
+
+    // Sound management
+    let soundManager = SoundManager()
+
+    
+    // MARK: Face Touch Classification and Motion Manager
 
     func startUpdates() {
-        if(motionManager.isDeviceMotionAvailable) {
-            // Reset everything when starting
-            resetAllState()
+        guard motionManager.isDeviceMotionAvailable else { return }
+        
+        // Reset everything when starting
+        resetAllState()
+        
+        motionManager.deviceMotionUpdateInterval = TimeInterval(ModelConstants.sensorsUpdateInterval)
+        
+        // Retrieve motion updates
+        motionManager.startDeviceMotionUpdates(to: .main) { deviceData, error in
+            guard let deviceData = deviceData else { return }
             
-            motionManager.deviceMotionUpdateInterval = sampleInterval
-            motionManager.showsDeviceMovementDisplay = true
-            
-            // Retrieve motion updates
-            motionManager.startDeviceMotionUpdates()
-            
-            startTime = Int(NSDate().timeIntervalSince1970)
-            processDeviceMotion()
-        }
-        else {
-            print("Device Motion is not available.")
-            return
+            // Add current data sample to data array
+//            startTime = Int(NSDate().timeIntervalSince1970)
+//            processDeviceMotion()
+            self.addDeviceSampleToDataArray(deviceSample: deviceData)
         }
     }
 
@@ -113,89 +134,94 @@ class WorkoutManager: ObservableObject {
             motionManager.stopDeviceMotionUpdates()
         }
     }
-
-    // MARK: Motion Processing
     
-    func processDeviceMotion() {
-        // Configure timer to fetch motion data
-        self.timer = Timer(fire:Date(), interval: sampleInterval, repeats: true, block: { [self] (timer) in
-            if let data = self.motionManager.deviceMotion {
-                
-                // TODO: implement more accurate face touch detection
-                let gravity = data.gravity
-                let acceleration = data.userAcceleration
-                let rotationRate = data.rotationRate
-                let attitude = data.attitude
-                
-                let rateAlongGravity = rotationRate.x * gravity.x
-                                     + rotationRate.y * gravity.y
-                                     + rotationRate.z * gravity.z
-                self.rateAlongGravityBuffer.addSample(rateAlongGravity)
-
-                if (!self.rateAlongGravityBuffer.isFull()) {
-                    return
-                }
-
-                let accumulatedRateAlongGravity = self.rateAlongGravityBuffer.sum() * self.sampleInterval
-                let peakRate = accumulatedRateAlongGravity > 0 ? self.rateAlongGravityBuffer.max() : self.rateAlongGravityBuffer.min()
-
-                // Determine face touch
-                if(accumulatedRateAlongGravity > rollThreshold && accumulatedRateAlongGravity < (2 * rollThreshold)) {
-                    if(peakRate > rateThreshold) {
-                        incrementFaceTouchCount()
-                    }
-                }
-                
-                let timeInterval = Int(NSDate().timeIntervalSince1970) - startTime
-                os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@",
-                       String(timeInterval),
-                       String(activity),
-                       String(acceleration.x),
-                       String(acceleration.y),
-                       String(acceleration.z),
-                       String(rotationRate.x),
-                       String(rotationRate.y),
-                       String(rotationRate.z),
-                       String(gravity.x),
-                       String(gravity.y),
-                       String(gravity.z),
-                       String(attitude.pitch),
-                       String(attitude.roll),
-                       String(attitude.yaw),
-                       String(accumulatedRateAlongGravity),
-                       String(peakRate)
-                )
-
-                // Reset after letting the rate settle
-                if(self.recentDetection && abs(self.rateAlongGravityBuffer.recentMean()) < self.resetThreshold) {
-                    self.recentDetection = false
-                    self.rateAlongGravityBuffer.reset()
-                    
-                    //TODO: commented out to fix face touch detection
-                    //soundManager.stopAudioEngine()
-                }
-            }
-        })
+    func addDeviceSampleToDataArray(deviceSample: CMDeviceMotion) {
+        // Add current gravity reading to data array
+        gravityDataX[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.gravity.x as NSNumber
+        gravityDataY[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.gravity.x as NSNumber
+        gravityDataZ[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.gravity.x as NSNumber
         
-        // Add timer to the current run loop
-        RunLoop.current.add(self.timer!, forMode: .default)
+        // Add current user accelerometer reading to data array
+        userAccelDataX[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.userAcceleration.x as NSNumber
+        userAccelDataY[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.userAcceleration.y as NSNumber
+        userAccelDataZ[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.userAcceleration.z as NSNumber
+        
+        // Add current attitude reading to data array
+        attitudeDataPitch[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.attitude.pitch as NSNumber
+        attitudeDataRoll[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.attitude.roll as NSNumber
+        attitudeDataYaw[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.attitude.yaw as NSNumber
+        
+        // Add current rotation rate reading to data array
+        rotRateDataX[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.rotationRate.x as NSNumber
+        rotRateDataY[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.rotationRate.y as NSNumber
+        rotRateDataZ[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.rotationRate.z as NSNumber
+        
+        // Update the index in the prediction window data array
+        currentIndexInPredictionWindow += 1
+
+        // If the data array is full, call the prediction method to get a new model prediction
+        if (currentIndexInPredictionWindow == ModelConstants.predictionWindowSize) {
+            if let modelPrediction = performModelPrediction() {
+
+                // Use the predicted activity here
+                prevFaceTouchLabel = currFaceTouchLabel
+                currFaceTouchLabel = modelPrediction
+                
+                print("PrevLabel: \(prevFaceTouchLabel)")
+                print("CurrtLabel: \(currFaceTouchLabel)\n")
+                if (prevFaceTouchLabel == "nofacetouch" && currFaceTouchLabel == "facetouch") {
+                    incrementFaceTouchCount()
+                }
+
+                // Start a new prediction window
+                currentIndexInPredictionWindow = 0
+                
+                soundManager.stopAudioEngine()
+                
+            }
+        }
     }
 
-    // MARK: Data Management
-    
-    func resetAllState() {
-        rateAlongGravityBuffer.reset()
+    func performModelPrediction () -> String? {
+        let modelInput = FaceTouchClassifier2Input(accelX: userAccelDataX, accelY: userAccelDataY, accelZ: userAccelDataZ,
+                                                   attitudePitch: attitudeDataPitch, attitudeRoll: attitudeDataRoll, attitudeYaw: attitudeDataYaw,
+                                                   gravityX: gravityDataX, gravityY: gravityDataY, gravityZ: gravityDataZ,
+                                                   rotRateX: rotRateDataX, rotRateY: rotRateDataY, rotRateZ: rotRateDataZ,
+                                                   stateIn: stateOutput)
+        
+        let modelOutput = try! faceTouchModel.prediction(from: modelInput)
 
+        // Update the state vector
+        let output = FaceTouchClassifier2Output(labelProbability: faceTouchProbability, label: faceTouchLabel, stateOut: stateOutput)
+        stateOutput = output.stateOut
+
+        // print probability of facetouch and actual predicted label
+        // TODO: use probabilty to count face touch only if above 80% confidence its a face touch
+        print("Facetouch Probability: \(String(describing: modelOutput.featureValue(for: "labelProbability")?.dictionaryValue["facetouch"]?.doubleValue))")
+        print("Label: \(modelOutput.featureValue(for: "label")!.stringValue)\n")
+
+//        if ((modelOutput.featureValue(for: "labelProbability")?.dictionaryValue["facetouch"]?.doubleValue)! >= 0.8) {
+//            return modelOutput.featureValue(for: "label")!.stringValue
+//        }
+//
+//        return "nofacetouch"
+        
+        return modelOutput.featureValue(for: "label")!.stringValue
+    }
+    
+    // MARK: Data Management
+
+    func resetAllState() {
         faceTouchCount = 0
         recentDetection = false
     }
-    
+
     func incrementFaceTouchCount() {
         if(!recentDetection) {
             faceTouchCount += 1
             recentDetection = true
-            
-            //soundManager.startAudioEngine()
+
+            soundManager.startAudioEngine()
         }
     }
 }
