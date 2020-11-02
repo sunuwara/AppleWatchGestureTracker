@@ -16,6 +16,7 @@ class MotionManager: ObservableObject {
     
     // MARK: Properties
     
+    //let soundManager = SoundManager()
     let motionManager = CMMotionManager()
     let wristLocationIsLeft = WKInterfaceDevice.current().wristLocation == .left
     
@@ -74,9 +75,9 @@ class MotionManager: ObservableObject {
                 
                 // TODO: implement more accurate face touch detection
                 let gravity = data.gravity
-                let acceleration = data.userAcceleration
+                //let acceleration = data.userAcceleration
                 let rotationRate = data.rotationRate
-                let attitude = data.attitude
+                //let attitude = data.attitude 
                 
                 let rateAlongGravity = rotationRate.x * gravity.x
                                      + rotationRate.y * gravity.y
@@ -97,29 +98,30 @@ class MotionManager: ObservableObject {
                     }
                 }
                 
-                let timestamp = Date().timeIntervalSinceNow
-                os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@",
-                       String(timestamp),
-                       String(gravity.x),
-                       String(gravity.y),
-                       String(gravity.z),
-                       String(acceleration.x),
-                       String(acceleration.y),
-                       String(acceleration.z),
-                       String(rotationRate.x),
-                       String(rotationRate.y),
-                       String(rotationRate.z),
-                       String(attitude.pitch),
-                       String(attitude.roll),
-                       String(attitude.yaw),
-                       String(accumulatedRollRot),
-                       String(peakRate)
-                )
+//                let timestamp = Date().timeIntervalSinceNow
+//                os_log("Motion: %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@",
+//                       String(timestamp),
+//                       String(gravity.x),
+//                       String(gravity.y),
+//                       String(gravity.z),
+//                       String(acceleration.x),
+//                       String(acceleration.y),
+//                       String(acceleration.z),
+//                       String(rotationRate.x),
+//                       String(rotationRate.y),
+//                       String(rotationRate.z),
+//                       String(attitude.pitch),
+//                       String(attitude.roll),
+//                       String(attitude.yaw),
+//                       String(accumulatedRollRot),
+//                       String(peakRate)
+//                )
 
                 // Reset after letting the rate settle
                 if(self.recentDetection && abs(self.rateAlongGravityBuffer.recentMean()) < self.resetThreshold) {
                     self.recentDetection = false
                     self.rateAlongGravityBuffer.reset()
+                    //soundManager.stopAudioEngine()
                 }
             }
         })
@@ -141,6 +143,8 @@ class MotionManager: ObservableObject {
         if(!recentDetection) {
             faceTouchCount += 1
             recentDetection = true
+            //soundManager.startAudioEngine()
         }
     }
+    
 }
