@@ -18,7 +18,7 @@
 		31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0325191889000C48E6 /* Assets.xcassets */; };
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
 		8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2419D4254F15690049CAB9 /* WorkoutManager.swift */; };
-		8B37E1B625390F530056E32C /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1B525390F530056E32C /* MotionManager.swift */; };
+		8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
 		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
 		B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */; };
@@ -89,7 +89,7 @@
 		8B2419E8254F2CFE0049CAB9 /* SoundAnalysis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SoundAnalysis.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/SoundAnalysis.framework; sourceTree = DEVELOPER_DIR; };
 		8B2419EA254F2D200049CAB9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DecontaminAide WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		8B37E1B525390F530056E32C /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FaceTouchClassifier.mlmodel; sourceTree = "<group>"; };
 		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
 		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "DACoughSneezeML 1.mlmodel"; sourceTree = "<group>"; };
@@ -143,7 +143,6 @@
 				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
 				31BC2EFB25191886000C48E6 /* ContentView.swift */,
 				8B2419D4254F15690049CAB9 /* WorkoutManager.swift */,
-				8B37E1B525390F530056E32C /* MotionManager.swift */,
 				B1545EE02547350E0062D0D7 /* SoundManager.swift */,
 				9E2BF565253E01A100EB00D9 /* LocationManager.swift */,
 				8B37E1BE253932F80056E32C /* RunningBuffer.swift */,
@@ -153,6 +152,7 @@
 				31BC2F0325191889000C48E6 /* Assets.xcassets */,
 				31BC2F0825191889000C48E6 /* Info.plist */,
 				31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */,
+				8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */,
 				B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */,
 				31BC2F0525191889000C48E6 /* Preview Content */,
 			);
@@ -306,9 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31BC2EFE25191886000C48E6 /* NotificationController.swift in Sources */,
-				8B37E1B625390F530056E32C /* MotionManager.swift in Sources */,
 				B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
+				8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */,
 				8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */,
 				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
 				9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */,
