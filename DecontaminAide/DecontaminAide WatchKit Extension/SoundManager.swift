@@ -2,7 +2,7 @@
 //  SoundManager.swift
 //  DecontaminAide WatchKit Extension
 //
-//  Created by Mitchell Piazza on 10/26/20.
+//  Created by PGCapstone Team on 10/26/20.
 //
 
 import Foundation
