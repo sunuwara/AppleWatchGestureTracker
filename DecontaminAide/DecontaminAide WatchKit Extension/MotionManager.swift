@@ -16,7 +16,7 @@ class MotionManager: ObservableObject {
     
     // MARK: Properties
     
-    let soundManager = SoundManager()
+    //let soundManager = SoundManager()
     let motionManager = CMMotionManager()
     let wristLocationIsLeft = WKInterfaceDevice.current().wristLocation == .left
     
@@ -75,9 +75,9 @@ class MotionManager: ObservableObject {
                 
                 // TODO: implement more accurate face touch detection
                 let gravity = data.gravity
-                let acceleration = data.userAcceleration
+                //let acceleration = data.userAcceleration
                 let rotationRate = data.rotationRate
-                let attitude = data.attitude
+                //let attitude = data.attitude 
                 
                 let rateAlongGravity = rotationRate.x * gravity.x
                                      + rotationRate.y * gravity.y
@@ -121,7 +121,7 @@ class MotionManager: ObservableObject {
                 if(self.recentDetection && abs(self.rateAlongGravityBuffer.recentMean()) < self.resetThreshold) {
                     self.recentDetection = false
                     self.rateAlongGravityBuffer.reset()
-                    soundManager.stopAudioEngine()
+                    //soundManager.stopAudioEngine()
                 }
             }
         })
@@ -143,7 +143,7 @@ class MotionManager: ObservableObject {
         if(!recentDetection) {
             faceTouchCount += 1
             recentDetection = true
-            soundManager.startAudioEngine()
+            //soundManager.startAudioEngine()
         }
     }
     
