@@ -20,7 +20,7 @@
 		8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2419D4254F15690049CAB9 /* WorkoutManager.swift */; };
 		8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
-		8BA459DE255055840053EF27 /* FaceTouchClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8BA459DD255055840053EF27 /* FaceTouchClassifier2.mlmodel */; };
+		8BF9E1D3255DD68900FC14CF /* FaceTouchClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */; };
 		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
 		B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */; };
 		B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1545EE02547350E0062D0D7 /* SoundManager.swift */; };
@@ -92,7 +92,7 @@
 		8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DecontaminAide WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FaceTouchClassifier.mlmodel; sourceTree = "<group>"; };
 		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
-		8BA459DD255055840053EF27 /* FaceTouchClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = FaceTouchClassifier2.mlmodel; path = "../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/1EAE3B5E-1455-438D-9D71-4488CE4718BD/FaceTouchClassifier2.mlmodel"; sourceTree = "<group>"; };
+		8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FaceTouchClassifier2.mlmodel; sourceTree = "<group>"; };
 		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "DACoughSneezeML 1.mlmodel"; sourceTree = "<group>"; };
 		B1545EE02547350E0062D0D7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				31BC2F0825191889000C48E6 /* Info.plist */,
 				31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */,
 				8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */,
-				8BA459DD255055840053EF27 /* FaceTouchClassifier2.mlmodel */,
+				8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */,
 				B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */,
 				31BC2F0525191889000C48E6 /* Preview Content */,
 			);
@@ -317,7 +317,7 @@
 				9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */,
 				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
 				8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */,
-				8BA459DE255055840053EF27 /* FaceTouchClassifier2.mlmodel in Sources */,
+				8BF9E1D3255DD68900FC14CF /* FaceTouchClassifier2.mlmodel in Sources */,
 				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,
 				B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */,
 			);
