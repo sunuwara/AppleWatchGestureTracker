@@ -11,9 +11,7 @@ import SwiftUI
 struct DecontaminAideApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ContentView()
-            }
+            HomeView()
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")

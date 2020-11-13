@@ -17,6 +17,7 @@
 		31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC2F0125191886000C48E6 /* ComplicationController.swift */; };
 		31BC2F0425191889000C48E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0325191889000C48E6 /* Assets.xcassets */; };
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
+		797CF15B255E2AF500363DD3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797CF15A255E2AF500363DD3 /* HomeView.swift */; };
 		8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2419D4254F15690049CAB9 /* WorkoutManager.swift */; };
 		8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
@@ -83,6 +84,7 @@
 		31BC2F0625191889000C48E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31BC2F0825191889000C48E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		797CF15A255E2AF500363DD3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8B2419D4254F15690049CAB9 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		8B2419DD254F2CA00049CAB9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		8B2419E4254F2CEB0049CAB9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
@@ -144,6 +146,7 @@
 				8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */,
 				31BC2EF925191886000C48E6 /* DecontaminAideApp.swift */,
 				31BC2EFB25191886000C48E6 /* ContentView.swift */,
+				797CF15A255E2AF500363DD3 /* HomeView.swift */,
 				8B2419D4254F15690049CAB9 /* WorkoutManager.swift */,
 				B1545EE02547350E0062D0D7 /* SoundManager.swift */,
 				9E2BF565253E01A100EB00D9 /* LocationManager.swift */,
@@ -310,6 +313,7 @@
 			files = (
 				31BC2EFE25191886000C48E6 /* NotificationController.swift in Sources */,
 				B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */,
+				797CF15B255E2AF500363DD3 /* HomeView.swift in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
 				8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */,
 				8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */,
