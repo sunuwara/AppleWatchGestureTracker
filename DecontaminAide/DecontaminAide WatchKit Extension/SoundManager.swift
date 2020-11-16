@@ -66,8 +66,8 @@ class SoundManager: ObservableObject {
     }
 
     func stopAudioEngine(){
-//        audioEngine.stop()
-//        audioEngine.inputNode.removeTap(onBus: 0)
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
     }
 
 }
@@ -90,13 +90,13 @@ class ResultsObserver : NSObject, SNResultsObserving {
 
         // Print the result as Type of Sound: percentage confidence.
         print("\(classification.identifier): \(percent) confidence.\n")
-        if(Int(percent)! > 95 && classification.identifier == "Cough") {
+        if(Int(confidence) > 95 && classification.identifier == "Cough") {
             print("You Just Coughed")
         }
-        if(Int(percent)! > 95 && classification.identifier == "Sneeze") {
+        if(Int(confidence) > 95 && classification.identifier == "Sneeze") {
             print("You Just Sneezed")
         }
-        if(Int(percent)! > 95 && classification.identifier == "Scratch") {
+        if(Int(confidence) > 95 && classification.identifier == "Scratch") {
             print("You Just Scratched")
         }
     }
