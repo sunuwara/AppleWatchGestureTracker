@@ -12,7 +12,7 @@ import SoundAnalysis
 
 class SoundManager: ObservableObject {
 
-    let model: MLModel = try! DACoughSneezeML_1(configuration: MLModelConfiguration.init()).model
+    let model: MLModel = try! SoundClassifier_copy(configuration: MLModelConfiguration.init()).model
 
     var audioEngine: AVAudioEngine!
     var inputBus: AVAudioNodeBus!

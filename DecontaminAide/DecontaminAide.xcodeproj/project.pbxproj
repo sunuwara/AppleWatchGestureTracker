@@ -25,6 +25,7 @@
 		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
 		B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */; };
 		B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1545EE02547350E0062D0D7 /* SoundManager.swift */; };
+		B1FA4BD725620BDF009FCCA1 /* SoundClassifier copy.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B1FA4BD625620BDF009FCCA1 /* SoundClassifier copy.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "DACoughSneezeML 1.mlmodel"; sourceTree = "<group>"; };
 		B1545EE02547350E0062D0D7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		B1FA4BD625620BDF009FCCA1 /* SoundClassifier copy.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SoundClassifier copy.mlmodel"; path = "../../../../../../../../var/folders/w_/gylc6jx51c54fwryrt6r51lr0000gn/T/SoundClassifier copy.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */,
 				8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */,
 				B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */,
+				B1FA4BD625620BDF009FCCA1 /* SoundClassifier copy.mlmodel */,
 				31BC2F0525191889000C48E6 /* Preview Content */,
 			);
 			path = "DecontaminAide WatchKit Extension";
@@ -324,6 +327,7 @@
 				8BF9E1D3255DD68900FC14CF /* FaceTouchClassifier2.mlmodel in Sources */,
 				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,
 				B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */,
+				B1FA4BD725620BDF009FCCA1 /* SoundClassifier copy.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
