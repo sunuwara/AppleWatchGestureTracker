@@ -70,7 +70,7 @@ class WorkoutManager: ObservableObject {
         static let stateInLength = 400
     }
     
-    let faceTouchModel: MLModel = try! FaceTouchClassifier2(configuration: MLModelConfiguration.init()).model
+    let faceTouchModel: MLModel = try! FaceTouchClassifier(configuration: MLModelConfiguration.init()).model
     var currentIndexInPredictionWindow = 0
 
     let gravityDataX = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
@@ -89,11 +89,11 @@ class WorkoutManager: ObservableObject {
     let rotRateDataY = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
     let rotRateDataZ = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
     
+    let rateAlongGravityBuffer = RunningBuffer(size: 50)
+
     let accumulatedRateAlongGravityData = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
     let peakRateData = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
 
-    var faceTouchProbability: [String : Double] = [:]
-    var faceTouchLabel: String = ""
     var stateOutput = try! MLMultiArray(shape:[ModelConstants.stateInLength as NSNumber], dataType: MLMultiArrayDataType.double)
     
     var prevFaceTouchLabel = "nofacetouch"
@@ -156,6 +156,21 @@ class WorkoutManager: ObservableObject {
         rotRateDataY[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.rotationRate.y as NSNumber
         rotRateDataZ[[currentIndexInPredictionWindow] as [NSNumber]] = deviceSample.rotationRate.z as NSNumber
         
+        let rateAlongGravity = deviceSample.rotationRate.x * deviceSample.gravity.x
+            + deviceSample.rotationRate.y * deviceSample.gravity.y
+            + deviceSample.rotationRate.z * deviceSample.gravity.z
+        self.rateAlongGravityBuffer.addSample(rateAlongGravity)
+
+        if (!self.rateAlongGravityBuffer.isFull()) {
+            return
+        }
+
+        let accumulatedRateAlongGravity = self.rateAlongGravityBuffer.sum() * ModelConstants.sensorsUpdateInterval
+        let peakRate = accumulatedRateAlongGravity > 0 ? self.rateAlongGravityBuffer.max() : self.rateAlongGravityBuffer.min()
+        
+        accumulatedRateAlongGravityData[[currentIndexInPredictionWindow] as [NSNumber]] = accumulatedRateAlongGravity as NSNumber
+        peakRateData[[currentIndexInPredictionWindow] as [NSNumber]] = peakRate as NSNumber
+        
         // Update the index in the prediction window data array
         currentIndexInPredictionWindow += 1
 
@@ -171,29 +186,41 @@ class WorkoutManager: ObservableObject {
                 print("CurrtLabel: \(currFaceTouchLabel)\n")
                 if (prevFaceTouchLabel == "nofacetouch" && currFaceTouchLabel == "facetouch") {
                     incrementFaceTouchCount()
+                    print("Face touch count: \(faceTouchCount)\n")
                 }
 
                 // Start a new prediction window
                 currentIndexInPredictionWindow = 0
+                rateAlongGravityBuffer.reset()
+
+//                prevFaceTouchLabel = "nofacetouch"
+//                currFaceTouchLabel = "nofacetouch"
+                recentDetection = false
                 
-                soundManager.stopAudioEngine()
+//                soundManager.stopAudioEngine()
                 
             }
         }
     }
 
     func performModelPrediction () -> String? {
-        let modelInput = FaceTouchClassifier2Input(accelX: userAccelDataX, accelY: userAccelDataY, accelZ: userAccelDataZ,
-                                                   attitudePitch: attitudeDataPitch, attitudeRoll: attitudeDataRoll, attitudeYaw: attitudeDataYaw,
-                                                   gravityX: gravityDataX, gravityY: gravityDataY, gravityZ: gravityDataZ,
-                                                   rotRateX: rotRateDataX, rotRateY: rotRateDataY, rotRateZ: rotRateDataZ,
-                                                   stateIn: stateOutput)
+//        let modelInput = FaceTouchClassifier2Input(accelX: userAccelDataX, accelY: userAccelDataY, accelZ: userAccelDataZ,
+//                                                   attitudePitch: attitudeDataPitch, attitudeRoll: attitudeDataRoll, attitudeYaw: attitudeDataYaw,
+//                                                   gravityX: gravityDataX, gravityY: gravityDataY, gravityZ: gravityDataZ,
+//                                                   rotRateX: rotRateDataX, rotRateY: rotRateDataY, rotRateZ: rotRateDataZ,
+//                                                   stateIn: stateOutput)
+        let modelInput = FaceTouchClassifierInput(Accel_x: userAccelDataX, Accel_y: userAccelDataY, Accel_z: userAccelDataZ,
+                                                  AccumulatedRateGravity: accumulatedRateAlongGravityData,
+                                                  Attitude_pitch: attitudeDataPitch, Attitude_roll: attitudeDataRoll, Attitude_yaw: attitudeDataYaw,
+                                                  Gravity_x: gravityDataX, Gravity_y: gravityDataY, Gravity_z: gravityDataZ,
+                                                  PeakRate: peakRateData,
+                                                  RotRate_x: rotRateDataX, RotRate_y: rotRateDataY, RotRate_z: rotRateDataZ,
+                                                  stateIn: stateOutput)
         
         let modelOutput = try! faceTouchModel.prediction(from: modelInput)
 
         // Update the state vector
-        let output = FaceTouchClassifier2Output(labelProbability: faceTouchProbability, label: faceTouchLabel, stateOut: stateOutput)
-        stateOutput = output.stateOut
+        stateOutput = (modelOutput.featureValue(for: "stateOut")?.multiArrayValue)!
 
         // print probability of facetouch and actual predicted label
         // TODO: use probabilty to count face touch only if above 80% confidence its a face touch
@@ -212,6 +239,9 @@ class WorkoutManager: ObservableObject {
     // MARK: Data Management
 
     func resetAllState() {
+        rateAlongGravityBuffer.reset()
+        prevFaceTouchLabel = "nofacetouch"
+        currFaceTouchLabel = "nofacetouch"
         faceTouchCount = 0
         recentDetection = false
     }
@@ -221,7 +251,7 @@ class WorkoutManager: ObservableObject {
             faceTouchCount += 1
             recentDetection = true
 
-            soundManager.startAudioEngine()
+//            soundManager.startAudioEngine()
         }
     }
 }

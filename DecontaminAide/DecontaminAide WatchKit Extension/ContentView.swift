@@ -19,8 +19,8 @@ struct ContentView: View {
     // MARK: View Body
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading, spacing: 10, content: {
+      
+            VStack(alignment: .center, spacing: 10, content: {
                 HStack(alignment: .center) {
                     Text("FACE TOUCH COUNT")
                         .font(.headline)
@@ -55,7 +55,7 @@ struct ContentView: View {
                     Spacer()
                 }
             })
-        }
+        
     }
     
     // MARK: Functions
