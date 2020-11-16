@@ -56,7 +56,7 @@ class LocationManager: ObservableObject {
         manager.stopUpdatingLocation()
     }
     
-    // convering address to coordinates
+    // converting address to coordinates
     func addressToCoordinate(address: String) {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
@@ -67,8 +67,8 @@ class LocationManager: ObservableObject {
                 // Handle no location found
                 return
             }
-            print("ADDRESS-LATI: \(String(describing: location.latitude))")
-            print("ADDRESS-LONG: \(String(describing: location.longitude))")
+//            print("ADDRESS-LATI: \(String(describing: location.latitude))")
+//            print("ADDRESS-LONG: \(String(describing: location.longitude))")
 
             self.homeLatitude = location.latitude
             self.homeLongitude = location.longitude
@@ -111,9 +111,6 @@ class LocationManager: ObservableObject {
         
         let homeLocation = CLLocation(latitude: homeLatitude, longitude: homeLongitude)
         let distance = homeLocation.distance(from: CLLocation(latitude: currLatitude, longitude: currLongitude))
-//        print("HOMELATI: \(self.homeLatitude) = HOMELONGI: \(self.homeLongitude)")
-//        print("CURRLATI: \(lati) CURRLONGI: \(longi)")
-//        print("DISTANCE: \(distance)")
 
         // TODO: implement notification
         // Notify if distance from home and current location is >50 meters
@@ -122,25 +119,4 @@ class LocationManager: ObservableObject {
         }
     }
     
-    // TODO: Monitoring a region around the specified coordinate
-//    func monitorRegionAtLocation() {
-//
-//        // Make sure the app is authorized.
-//        if manager.authorizationStatus == .authorizedAlways {
-//
-//            let center = CLLocationCoordinate2D(latitude: homeLatitude, longitude: homeLongitude)
-//            // Register the region
-//            let region = CLCircularRegion(center: center, radius: 5.0, identifier: "Home")
-//            region.notifyOnEntry = true
-//            region.notifyOnExit = false
-//
-//            locationManager.startMonitoring(for: region)
-//        }
-//    }
-
-    // TODO: Handling a region-entered notification
-//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//        print("LocationManager didEnterRegion:- \(region)")
-//    }
-
 }

@@ -37,11 +37,11 @@ struct ContentView: View {
                         if(!started) {
                             started = true
                             workoutManager.startWorkout()
-                            //locationManager.startUpdates()
+                            locationManager.startUpdates()
                         } else {
                             started = false
                             workoutManager.stopWorkout()
-                            //locationManager.stopUpdates()
+                            locationManager.stopUpdates()
                         }
                     }) {
                         Image(systemName: started ? "stop.fill" : "play.fill")
