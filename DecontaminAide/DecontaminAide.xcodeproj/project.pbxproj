@@ -19,9 +19,8 @@
 		31BC2F0725191889000C48E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BC2F0625191889000C48E6 /* Preview Assets.xcassets */; };
 		797CF15B255E2AF500363DD3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797CF15A255E2AF500363DD3 /* HomeView.swift */; };
 		8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2419D4254F15690049CAB9 /* WorkoutManager.swift */; };
-		8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */; };
 		8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37E1BE253932F80056E32C /* RunningBuffer.swift */; };
-		8BF9E1D3255DD68900FC14CF /* FaceTouchClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */; };
+		8BA74CB22575A5300020BE69 /* ActivityClassifier1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8BA74CB12575A5300020BE69 /* ActivityClassifier1.mlmodel */; };
 		9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BF565253E01A100EB00D9 /* LocationManager.swift */; };
 		B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */; };
 		B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1545EE02547350E0062D0D7 /* SoundManager.swift */; };
@@ -93,9 +92,8 @@
 		8B2419E8254F2CFE0049CAB9 /* SoundAnalysis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SoundAnalysis.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/SoundAnalysis.framework; sourceTree = DEVELOPER_DIR; };
 		8B2419EA254F2D200049CAB9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		8B2419FA254F2EA80049CAB9 /* DecontaminAide WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DecontaminAide WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FaceTouchClassifier.mlmodel; sourceTree = "<group>"; };
 		8B37E1BE253932F80056E32C /* RunningBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningBuffer.swift; sourceTree = "<group>"; };
-		8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FaceTouchClassifier2.mlmodel; sourceTree = "<group>"; };
+		8BA74CB12575A5300020BE69 /* ActivityClassifier1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ActivityClassifier1.mlmodel; sourceTree = "<group>"; };
 		9E2BF565253E01A100EB00D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "DACoughSneezeML 1.mlmodel"; sourceTree = "<group>"; };
 		B1545EE02547350E0062D0D7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -159,8 +157,7 @@
 				31BC2F0325191889000C48E6 /* Assets.xcassets */,
 				31BC2F0825191889000C48E6 /* Info.plist */,
 				31BC2F0925191889000C48E6 /* PushNotificationPayload.apns */,
-				8B241A0E254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel */,
-				8BF9E1D2255DD68900FC14CF /* FaceTouchClassifier2.mlmodel */,
+				8BA74CB12575A5300020BE69 /* ActivityClassifier1.mlmodel */,
 				B1545EDB254731F10062D0D7 /* DACoughSneezeML 1.mlmodel */,
 				B1FA4BDB256230F5009FCCA1 /* SoundClassifier copy.mlmodel */,
 				31BC2F0525191889000C48E6 /* Preview Content */,
@@ -318,14 +315,13 @@
 				B1545EDC254731F10062D0D7 /* DACoughSneezeML 1.mlmodel in Sources */,
 				797CF15B255E2AF500363DD3 /* HomeView.swift in Sources */,
 				31BC2EFC25191886000C48E6 /* ContentView.swift in Sources */,
-				8B241A0F254FA2E70049CAB9 /* FaceTouchClassifier.mlmodel in Sources */,
 				8B2419D5254F15690049CAB9 /* WorkoutManager.swift in Sources */,
 				31BC2F0225191886000C48E6 /* ComplicationController.swift in Sources */,
 				B1FA4BDC256230F5009FCCA1 /* SoundClassifier copy.mlmodel in Sources */,
+				8BA74CB22575A5300020BE69 /* ActivityClassifier1.mlmodel in Sources */,
 				9E2BF566253E01A100EB00D9 /* LocationManager.swift in Sources */,
 				31BC2EFA25191886000C48E6 /* DecontaminAideApp.swift in Sources */,
 				8B37E1BF253932F80056E32C /* RunningBuffer.swift in Sources */,
-				8BF9E1D3255DD68900FC14CF /* FaceTouchClassifier2.mlmodel in Sources */,
 				31BC2F0025191886000C48E6 /* NotificationView.swift in Sources */,
 				B1545EE12547350E0062D0D7 /* SoundManager.swift in Sources */,
 			);
