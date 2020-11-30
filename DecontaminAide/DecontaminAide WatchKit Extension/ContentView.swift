@@ -19,48 +19,44 @@ struct ContentView: View {
     // MARK: View Body
     
     var body: some View {
-      
-            VStack(alignment: .center, spacing: 10, content: {
-                HStack(alignment: .center) {
-                    Text("FACE TOUCH COUNT")
-                        .font(.headline)
-                }
-                
-                Button(action: {}) {
-                    Text("\(workoutManager.faceTouchCount)")
-                        .font(.title)
-                }
-                
-                HStack() {
-                    Spacer()
-                    Button(action: {
-                        if(!started) {
-                            started = true
-                            workoutManager.startWorkout()
-                            locationManager.startUpdates()
-                        } else {
-                            started = false
-                            workoutManager.stopWorkout()
-                            locationManager.stopUpdates()
-                        }
-                    }) {
-                        Image(systemName: started ? "stop.fill" : "play.fill")
-                            .padding(20)
-                            .foregroundColor(.white)
-                            .background(started ? Color.red : Color.green)
-                            .font(.largeTitle)
-                            .mask(Circle())
+        VStack(alignment: .center, spacing: 10, content: {
+            HStack(alignment: .center) {
+                Text("FACE TOUCH COUNT")
+                    .font(.headline)
+            }
+            
+            Button(action: {}) {
+                Text("\(workoutManager.faceTouchCount)")
+                    .font(.title)
+            }
+            
+            HStack() {
+                Spacer()
+                Button(action: {
+                    if(!started) {
+                        started = true
+                        workoutManager.startWorkout()
+                        locationManager.startUpdates()
+                    } else {
+                        started = false
+                        workoutManager.stopWorkout()
+                        locationManager.stopUpdates()
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    Spacer()
+                }) {
+                    Image(systemName: started ? "stop.fill" : "play.fill")
+                        .padding(20)
+                        .foregroundColor(.white)
+                        .background(started ? Color.red : Color.green)
+                        .font(.largeTitle)
+                        .mask(Circle())
                 }
-            })
-        
+                .buttonStyle(PlainButtonStyle())
+                Spacer()
+            }
+        })
     }
     
     // MARK: Functions
-    
-    
 }
 
 #if DEBUG
