@@ -202,11 +202,11 @@ class WorkoutManager: ObservableObject {
         
         // Count face touch only if its 99% - 100% confident and hasn't detected face touch recently
         // Handles the lag in confidence staying high after detection
-        if ((facetouchConfidence >= 0.9999 && facetouchConfidence <= 1.00) && (recentDetection == false)) {
+        if ((facetouchConfidence >= 0.999 && facetouchConfidence <= 1.00) && (recentDetection == false)) {
             return "facetouch"
         }
         
-        if (facetouchConfidence <= 0.9999 || facetouchConfidence >= 1.00) {
+        if (facetouchConfidence <= 0.999 || facetouchConfidence > 1.00) {
             recentDetection = false
         }
 
