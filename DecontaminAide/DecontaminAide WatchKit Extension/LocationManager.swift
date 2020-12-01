@@ -17,13 +17,10 @@ class LocationManager: ObservableObject {
     // MARK: Properties
     
     var manager = CLLocationManager()
+    var defaults = UserDefaults.standard
     
     // Home address
-    var address = "355 54th St SW, Wyoming, MI 49548"
-    
-    // Latitude and longitude variables of home address
-    var homeLatitude = 0.0
-    var homeLongitude = 0.0
+    //var address = "355 54th St SW, Wyoming, MI 49548"
 
     // The app is using 50hz data and the buffer is going to hold 1s worth of data.
     let rateAlongGravityBuffer = RunningBuffer(size: 50)
@@ -45,7 +42,7 @@ class LocationManager: ObservableObject {
         // Retrieve location update
         manager.startUpdatingLocation()
         
-        addressToCoordinate(address: address)
+        //addressToCoordinate(address: address)
         
         processDeviceLocation()
         
@@ -54,26 +51,6 @@ class LocationManager: ObservableObject {
     // Stop updating location
     func stopUpdates() {
         manager.stopUpdatingLocation()
-    }
-    
-    // converting address to coordinates
-    func addressToCoordinate(address: String) {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location?.coordinate
-            else {
-                // Handle no location found
-                return
-            }
-//            print("ADDRESS-LATI: \(String(describing: location.latitude))")
-//            print("ADDRESS-LONG: \(String(describing: location.longitude))")
-
-            self.homeLatitude = location.latitude
-            self.homeLongitude = location.longitude
-
-        }
     }
     
     // MARK: Location Processing
@@ -92,8 +69,10 @@ class LocationManager: ObservableObject {
 //                       String(data.latitude),
 //                       String(data.longitude)
 //                )
-            
-                atHome(currLatitude: data.latitude, currLongitude: data.longitude)
+                
+                getHomeAddress(currLatitude: data.latitude, currLongitude: data.longitude)
+                leavingHome(currLatitude: data.latitude, currLongitude: data.longitude)
+                
             }
         })
         
@@ -106,17 +85,73 @@ class LocationManager: ObservableObject {
         rateAlongGravityBuffer.reset()
     }
     
+    // get user home address first time user launch app
+    func getHomeAddress(currLatitude: Double, currLongitude: Double) {
+                
+        // get the users location
+        let launchedBefore = defaults.bool(forKey: "launchedBefore")
+        if launchedBefore {
+            print("Not first time")
+        }
+        else {
+            print("\nFirst launch, setting UserDefault")
+            defaults.set(true, forKey: "launchedBefore")
+            
+            // set address coordinates in default setting
+            defaults.set(currLatitude, forKey: "homeLatitude")
+            defaults.set(currLongitude, forKey: "homeLongitude")
+            
+//            print("\nHomeLati: ", getHomeLatitude())
+//            print("\nHomeLongi: \n", getHomeLongitude())
+        }
+    }
+    
     // Check if the user is leaving home
-    func atHome(currLatitude: Double, currLongitude: Double) {
+    func leavingHome(currLatitude: Double, currLongitude: Double) {
+        let tempLati = getHomeLatitude()
+        let tempLongi = getHomeLongitude()
         
-        let homeLocation = CLLocation(latitude: homeLatitude, longitude: homeLongitude)
+        let homeLocation = CLLocation(latitude: tempLati, longitude: tempLongi)
         let distance = homeLocation.distance(from: CLLocation(latitude: currLatitude, longitude: currLongitude))
-
-        // TODO: implement notification
+//        print("\nhomeLocation: ", homeLocation)
+//        print("\nDISTANCE: ", distance)
+        
         // Notify if distance from home and current location is >50 meters
         if(distance > 50) {
             print("Mask-up!\n")
         }
     }
     
+    // returns the user's home latitude
+    func getHomeLatitude() -> Double {
+        let homeLatitude = defaults.double(forKey: "homeLatitude")
+        return homeLatitude
+    }
+    
+    // returns the user's home longitude
+    func getHomeLongitude() -> Double {
+        let homeLongitude = defaults.double(forKey: "homeLongitude")
+        return homeLongitude
+    }
+    
+    /*
+    // converting address to coordinates
+    func addressToCoordinate(address: String) {
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location?.coordinate
+            else {
+                // Handle no location found
+                return
+            }
+            // print("ADDRESS-LATI: \(String(describing: location.latitude))")
+            // print("ADDRESS-LONG: \(String(describing: location.longitude))")
+
+            self.homeLatitude = location.latitude
+            self.homeLongitude = location.longitude
+
+        }
+    }*/
 }
