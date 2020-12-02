@@ -156,9 +156,15 @@ class WorkoutManager: ObservableObject {
                 // Use the predicted activity here
                 prevFaceTouchLabel = currFaceTouchLabel
                 currFaceTouchLabel = modelPrediction
+<<<<<<< HEAD
                 print("PrevLabel: \(prevFaceTouchLabel)")
                 print("CurrLabel: \(currFaceTouchLabel)\n")
                 
+=======
+                
+               //print("PrevLabel: \(prevFaceTouchLabel)")
+               // print("CurrtLabel: \(currFaceTouchLabel)\n")
+>>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
                 if (prevFaceTouchLabel == "nofacetouch" && currFaceTouchLabel == "facetouch") {
                     incrementFaceTouchCount()
                 }
@@ -166,8 +172,13 @@ class WorkoutManager: ObservableObject {
                 // Start a new prediction window
                 currentIndexInPredictionWindow = 0
                 
+<<<<<<< HEAD
                 // Start Sound Analysis after face touch is detected
 //                soundManager.stopAudioEngine()
+=======
+                soundManager.stopAudioEngine()
+                
+>>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
             }
         }
     }
@@ -226,8 +237,12 @@ class WorkoutManager: ObservableObject {
             recentDetection = true
             print("Face touch count: \(faceTouchCount)\n")
 
+<<<<<<< HEAD
             // Start Sound Analysis after face touch is detected
 //            soundManager.startAudioEngine()
+=======
+            //soundManager.startAudioEngine()
+>>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
         }
     }
 }
