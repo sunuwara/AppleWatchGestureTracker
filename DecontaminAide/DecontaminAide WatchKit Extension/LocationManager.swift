@@ -18,9 +18,6 @@ class LocationManager: ObservableObject {
     
     var manager = CLLocationManager()
     var defaults = UserDefaults.standard
-    
-    // Home address
-    //var address = "355 54th St SW, Wyoming, MI 49548"
 
     // The app is using 50hz data and the buffer is going to hold 1s worth of data.
     let rateAlongGravityBuffer = RunningBuffer(size: 50)
@@ -38,12 +35,11 @@ class LocationManager: ObservableObject {
         // The best level of accuracy location available
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
         
         // Retrieve location update
         manager.startUpdatingLocation()
-        
-        //addressToCoordinate(address: address)
-        
+    
         processDeviceLocation()
         
     }
@@ -63,6 +59,7 @@ class LocationManager: ObservableObject {
                                           data.latitude,
                                           data.longitude)
 
+                // to print out the output
 //                let timestamp = Date().timeIntervalSinceNow
 //                os_log("Location: %@, %@, %@",
 //                       String(timestamp),
@@ -91,7 +88,7 @@ class LocationManager: ObservableObject {
         // get the users location
         let launchedBefore = defaults.bool(forKey: "launchedBefore")
         if launchedBefore {
-            print("Not first time")
+            print("Not first time lunch")
         }
         else {
             print("\nFirst launch, setting UserDefault")
@@ -100,9 +97,7 @@ class LocationManager: ObservableObject {
             // set address coordinates in default setting
             defaults.set(currLatitude, forKey: "homeLatitude")
             defaults.set(currLongitude, forKey: "homeLongitude")
-            
-//            print("\nHomeLati: ", getHomeLatitude())
-//            print("\nHomeLongi: \n", getHomeLongitude())
+
         }
     }
     
@@ -113,8 +108,6 @@ class LocationManager: ObservableObject {
         
         let homeLocation = CLLocation(latitude: tempLati, longitude: tempLongi)
         let distance = homeLocation.distance(from: CLLocation(latitude: currLatitude, longitude: currLongitude))
-//        print("\nhomeLocation: ", homeLocation)
-//        print("\nDISTANCE: ", distance)
         
         // Notify if distance from home and current location is >50 meters
         if(distance > 50) {
@@ -134,24 +127,4 @@ class LocationManager: ObservableObject {
         return homeLongitude
     }
     
-    /*
-    // converting address to coordinates
-    func addressToCoordinate(address: String) {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location?.coordinate
-            else {
-                // Handle no location found
-                return
-            }
-            // print("ADDRESS-LATI: \(String(describing: location.latitude))")
-            // print("ADDRESS-LONG: \(String(describing: location.longitude))")
-
-            self.homeLatitude = location.latitude
-            self.homeLongitude = location.longitude
-
-        }
-    }*/
 }

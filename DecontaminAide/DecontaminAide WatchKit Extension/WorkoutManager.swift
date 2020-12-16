@@ -192,7 +192,7 @@ class WorkoutManager: ObservableObject {
 
         // Get prediction output
         let labelProbability = predictOutput.featureValue(for: "labelProbability")!.dictionaryValue as! [String : Double]
-        let label = predictOutput.featureValue(for: "label")!.stringValue
+        //let label = predictOutput.featureValue(for: "label")!.stringValue
         stateOutput = predictOutput.featureValue(for: "stateOut")!.multiArrayValue!
         let facetouchConfidence = labelProbability["facetouch"] ?? 0.0
         
