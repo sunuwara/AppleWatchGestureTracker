@@ -111,7 +111,7 @@ class LocationManager: ObservableObject {
         
         // Notify if distance from home and current location is >50 meters
         if(distance > 50) {
-            print("Mask-up!\n")
+            print("Mask-up: You are leaving home.\n")
         }
     }
     
