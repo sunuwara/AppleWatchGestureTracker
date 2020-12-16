@@ -62,14 +62,12 @@ class SoundManager: ObservableObject {
                 self.streamAnalyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }
         }
-
     }
 
     func stopAudioEngine(){
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
     }
-
 }
 
 // Observer object that is called as analysis results are found.

@@ -156,15 +156,10 @@ class WorkoutManager: ObservableObject {
                 // Use the predicted activity here
                 prevFaceTouchLabel = currFaceTouchLabel
                 currFaceTouchLabel = modelPrediction
-<<<<<<< HEAD
-                print("PrevLabel: \(prevFaceTouchLabel)")
-                print("CurrLabel: \(currFaceTouchLabel)\n")
                 
-=======
+//                print("Previous Facetouch prediction: \(prevFaceTouchLabel)")
+                print("Facetouch prediction: \(currFaceTouchLabel)\n")
                 
-               //print("PrevLabel: \(prevFaceTouchLabel)")
-               // print("CurrtLabel: \(currFaceTouchLabel)\n")
->>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
                 if (prevFaceTouchLabel == "nofacetouch" && currFaceTouchLabel == "facetouch") {
                     incrementFaceTouchCount()
                 }
@@ -172,13 +167,8 @@ class WorkoutManager: ObservableObject {
                 // Start a new prediction window
                 currentIndexInPredictionWindow = 0
                 
-<<<<<<< HEAD
                 // Start Sound Analysis after face touch is detected
 //                soundManager.stopAudioEngine()
-=======
-                soundManager.stopAudioEngine()
-                
->>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
             }
         }
     }
@@ -207,9 +197,9 @@ class WorkoutManager: ObservableObject {
         let facetouchConfidence = labelProbability["facetouch"] ?? 0.0
         
         // Print probability of facetouch and actual predicted label
-        print("Current Label: \(label)")
+//        print("Current Label: \(label)")
         print("Facetouch Confidence: \(facetouchConfidence)")
-        print("Recent Detection: \(recentDetection)\n")
+//        print("Recent Detection: \(recentDetection)\n")
         
         // Count face touch only if its 99% - 100% confident and hasn't detected face touch recently
         // Handles the lag in confidence staying high after detection
@@ -236,13 +226,9 @@ class WorkoutManager: ObservableObject {
             faceTouchCount += 1
             recentDetection = true
             print("Face touch count: \(faceTouchCount)\n")
-
-<<<<<<< HEAD
+                
             // Start Sound Analysis after face touch is detected
-//            soundManager.startAudioEngine()
-=======
-            //soundManager.startAudioEngine()
->>>>>>> ab973d097945390c6ac5fd9ca1616503f6c6603b
+            soundManager.startAudioEngine()
         }
     }
 }
